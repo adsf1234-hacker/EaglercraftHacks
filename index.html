@@ -7,98 +7,208 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0d0d0d;
-            color: #80cbc4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            margin: 20px;
-            color: #4dd0e1;
-            text-shadow: 0 0 10px #4dd0e1;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 800px;
-            color: #80cbc4;
-        }
-        .column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 20px;
-        }
-        .vertical-line {
-            width: 2px;
-            background-color: #4dd0e1;
-            height: 100%;
-            margin: 0 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #2e2e2e;
-            color: #80cbc4;
-            width: 200px;
-            text-shadow: 0 0 5px #4dd0e1;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        button:hover {
-            background-color: #424242;
-            transform: scale(1.05);
-        }
-        footer {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #4dd0e1;
-            text-shadow: 0 0 5px #4dd0e1;
-        }
-        .top-right-button {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 8px 16px;
-            background-color: #4dd0e1;
-            color: #0d0d0d;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
-        }
-        .top-right-button:hover {
-            transform: scale(1.05);
-        }
-        .iframe-container {
-            display: none;
-            position: fixed;
-            top: 50px;
-            right: 10px;
-            width: 80%;
-            max-width: 800px;
-            height: 80%;
-            border: 2px solid #4dd0e1;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            background-color: #0d0d0d;
-            z-index: 1000;
-        }
-        .iframe-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    color: #b2dfdb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 20px;
+    color: #4dd0e1;
+    text-shadow: 0 0 15px #4dd0e1, 0 0 30px rgba(77, 208, 225, 0.5);
+    font-size: 2.5rem;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    color: #b2dfdb;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(13, 13, 13, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    animation: slideIn 1s ease-out;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4dd0e1, transparent);
+    animation: growLine 1.5s ease-out;
+}
+
+button {
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #2e2e2e, #424242);
+    color: #b2dfdb;
+    width: 220px;
+    text-shadow: 0 0 10px #4dd0e1;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4dd0e1, #2e2e2e);
+    box-shadow: 0 4px 20px rgba(77, 208, 225, 0.5);
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #4dd0e1;
+    text-shadow: 0 0 5px rgba(77, 208, 225, 0.5);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.top-right-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    background: linear-gradient(135deg, #4dd0e1, #00acc1);
+    color: #0d0d0d;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 172, 193, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-right-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 25px rgba(0, 172, 193, 0.7);
+}
+
+.iframe-container {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px solid #4dd0e1;
+    border-radius: 12px;
+    background: rgba(13, 13, 13, 0.95);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes growLine {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .top-right-button {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -106,7 +216,7 @@
     <button class="top-right-button" onclick="toggleIframe()">View Servers</button>
 
     <div class="iframe-container" id="iframeContainer">
-        <iframe src="https://servers.webmc.xyz/" title="Eaglercraft Servers"></iframe>
+        <iframe src="https://servers.eaglercraft.com/" title="Eaglercraft Servers"></iframe>
     </div>
 
     <div class="container">
